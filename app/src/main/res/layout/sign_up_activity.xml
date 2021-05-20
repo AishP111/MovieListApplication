@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TableLayout
+            android:id="@+id/sign_up_table"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_user_name"
+                android:hint="@string/userName"
+                android:textSize="16dp"
+                android:padding="12dp"
+                android:layout_margin="16dp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_user_pwd"
+                android:hint="@string/userPwd"
+                android:textSize="16dp"
+                android:padding="12dp"
+                android:layout_margin="16dp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_user_email"
+                android:hint="@string/userEmail"
+                android:textSize="16dp"
+                android:padding="12dp"
+                android:layout_margin="16dp"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_user_ph_num"
+                android:hint="@string/userPhNo"
+                android:textSize="16dp"
+                android:padding="12dp"
+                android:layout_margin="16dp"/>
+
+            <Spinner
+                android:id="@+id/sign_up_profession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sign_up_button"
+                android:text="@string/signUpAction"
+                android:textSize="16dp"
+                android:padding="12dp"
+                android:layout_margin="12dp"/>
+        </TableLayout>
+        <TextView
+            android:id="@+id/sign_up_company_info"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccentNew"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/compInfoDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+</LinearLayout>

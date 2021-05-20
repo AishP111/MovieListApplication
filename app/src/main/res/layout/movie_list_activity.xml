@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:id="@+id/movie_list_search_results_json"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Results"
+                android:textSize="18sp" />
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/error_message_display"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:padding="16dp"
+            android:text="@string/error_message"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/movie_loading_indicator"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/movie_list_company_info"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccentNew"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/compInfoDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+    </FrameLayout>
+
+</LinearLayout>

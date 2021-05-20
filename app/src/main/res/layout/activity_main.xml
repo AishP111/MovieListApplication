@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_user_name"
+            android:hint="@string/userName"
+            android:textSize="16dp"
+            android:padding="12dp"
+            android:layout_margin="16dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_user_pwd"
+            android:hint="@string/userPwd"
+            android:textSize="16dp"
+            android:padding="12dp"
+            android:layout_margin="16dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_button"
+            android:text="@string/loginAction"
+            android:textSize="16dp"
+            android:padding="12dp"
+            android:layout_margin="12dp"/>
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/createnewac"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_gravity="center"
+        android:text="Create a new Acount!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

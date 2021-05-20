@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MovieListApplication</string>
+    <string name="userName">Name</string>
+    <string name="userPwd">Password</string>
+    <string name="userEmail">Email</string>
+    <string name="userPhNo">Phone Number</string>
+    <string name="loginAction">Login</string>
+    <string name="signUpAction">Sign Up</string>
+    <string name="greetingMsg">Hello, There!\n\n\nSwipe Right to Login/Sign Up</string>
+    <string name="companyInfo">Company Info</string>>
+    <string name="compInfoDesc">Company: Geeksynergy Technologies Pvt Ltd\n\nAddress: Sanjayanagar, Bengaluru-56\n\nPhone: XXXXXXXXX09\n\nEmail: XXXXXX@gmail.com</string>
+    <string name="error_message">Failed to get results, Please try again!</string>
+</resources>
