@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = MainActivity.class.getSimpleName();
     TextView mSignUpTextView;
     Button mLoginButton;
     EditText mLoginUserName, mLoginUserPwd;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mSignUpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "Starting SignUpActivity");
                 startActivity(new Intent(MainActivity.this, SignUpActivity.class));
             }
         });
@@ -44,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "Processing Login request");
                 processLogin();
             }
         });
     }
 
     void processLogin() {
+        Log.i(TAG, "processLogin");
         String username = mLoginUserName.getText().toString();
         String password = mLoginUserPwd.getText().toString();
 
@@ -67,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             if(username.equals(uName) && password.equals(uPassword)){
+                Log.i(TAG, "Upon successful login, starting MovieListActivity");
                 // Starting new page
                 Intent i = new  Intent(getApplicationContext(),MovieListActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

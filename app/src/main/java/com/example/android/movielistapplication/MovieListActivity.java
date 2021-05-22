@@ -2,6 +2,7 @@ package com.example.android.movielistapplication;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,14 +12,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class MovieListActivity extends AppCompatActivity {
+    private static final String TAG = MovieListActivity.class.getSimpleName();
     TextView mErrorMessageTextView, mMovieResultsTextView, mCompanyInfoTextView;
     ProgressBar mResultsProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.movie_list_activity);
 
@@ -26,14 +28,19 @@ public class MovieListActivity extends AppCompatActivity {
         mResultsProgressBar = (ProgressBar) findViewById(R.id.movie_loading_indicator);
         mMovieResultsTextView = (TextView) findViewById(R.id.movie_list_search_results_json);
         mCompanyInfoTextView = (TextView) findViewById(R.id.movie_list_company_info);
+
+        Log.d(TAG, "Starting FetchMovieListTask");
+        new FetchMovieListTask().execute();
     }
 
     void showJsonDataView() {
+        Log.d(TAG, "showJsonDataView");
         mMovieResultsTextView.setVisibility(View.VISIBLE);
         mErrorMessageTextView.setVisibility(View.INVISIBLE);
     }
 
     void showErrorMessage(){
+        Log.d(TAG, "showErrorMessage");
         mErrorMessageTextView.setVisibility(View.VISIBLE);
         mMovieResultsTextView.setVisibility(View.INVISIBLE);
     }
@@ -42,12 +49,14 @@ public class MovieListActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
+            Log.d(TAG, "FetchMovieListTask : onPreExecute");
             super.onPreExecute();
             mResultsProgressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected String doInBackground(Void... params) {
+            Log.d(TAG, "FetchMovieListTask : doInBackground");
             String movieSearchResults = null;
             try {
                 movieSearchResults = NetworkUtils.getResponseFromHttpUrl();
@@ -59,6 +68,7 @@ public class MovieListActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String movieSearchResults) {
+            Log.d(TAG, "FetchMovieListTask : onPostExecute");
             mResultsProgressBar.setVisibility(View.INVISIBLE);
             if (movieSearchResults != null && !movieSearchResults.equals("")) {
                 showJsonDataView();
@@ -80,6 +90,7 @@ public class MovieListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int selectedItemId = item.getItemId();
         if (selectedItemId == R.id.action_company_info) {
+            Log.d(TAG, "Displaying company info");
             mMovieResultsTextView.setVisibility(View.INVISIBLE);
             mCompanyInfoTextView.setVisibility(View.VISIBLE);
             return true;

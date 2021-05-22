@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUpActivity extends AppCompatActivity {
+    private static final String TAG = SignUpActivity.class.getSimpleName();
     EditText mSignUpUserName, mSignUpUserPwd, mSignUpUserEmail, mSignUpUserPhoneNo;
     Button mSignUpButton;
     TextView mCompInfo;
@@ -30,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.i(TAG, "onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_activity);
 
@@ -53,12 +56,14 @@ public class SignUpActivity extends AppCompatActivity {
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d(TAG, "Processing new user registration request");
                 processSignUp();
             }
         });
     }
 
     void processSignUp() {
+        Log.i(TAG, "processSignUp");
         String name = mSignUpUserName.getText().toString();
         String password = mSignUpUserPwd.getText().toString();
         String email = mSignUpUserEmail.getText().toString();
@@ -89,6 +94,7 @@ public class SignUpActivity extends AppCompatActivity {
             editor.commit();
             Toast.makeText(SignUpActivity.this, "Registered Successfully!", Toast.LENGTH_SHORT).show();
         }
+        Log.i(TAG, "Launching Login Page");
         Intent loginPageIntent = new Intent(SignUpActivity.this, MainActivity.class);
         startActivity(loginPageIntent);
     }
@@ -103,6 +109,7 @@ public class SignUpActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int selectedItemId = item.getItemId();
         if (selectedItemId == R.id.action_company_info) {
+            Log.d(TAG, "Displaying company info");
             mSignUpTableLayout.setVisibility(View.INVISIBLE);
             mCompInfo.setVisibility(View.VISIBLE);
             return true;

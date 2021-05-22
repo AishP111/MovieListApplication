@@ -1,6 +1,7 @@
 package com.example.android.movielistapplication;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,6 +11,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class NetworkUtils {
+    private static final String TAG = NetworkUtils.class.getSimpleName();
     final static String MOVIE_LIST_BASE_URL =
             "https://hoblist.com/movieList";
 
@@ -26,6 +28,7 @@ public class NetworkUtils {
     public static URL searchUrl = null;
 
     public static void buildUrl() {
+        Log.i(TAG, "buildUrl");
         Uri builtUri = Uri.parse(MOVIE_LIST_BASE_URL).buildUpon()
                 .appendQueryParameter(PARAM_CATEGORY, catValue)
                 .appendQueryParameter(PARAM_LANGUAGE, languageVal)
@@ -35,12 +38,14 @@ public class NetworkUtils {
 
         try {
             searchUrl = new URL(builtUri.toString());
+            Log.d(TAG, "buildUrl : searchUrl = " + searchUrl.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
     }
 
     public static String getResponseFromHttpUrl() throws IOException {
+        Log.i(TAG, "getResponseFromHttpUrl");
         buildUrl();
         HttpURLConnection urlConnection = (HttpURLConnection) searchUrl.openConnection();
         try {
@@ -56,6 +61,7 @@ public class NetworkUtils {
                 return null;
             }
         } finally {
+            Log.d(TAG, "Closing the connection");
             urlConnection.disconnect();
         }
     }
