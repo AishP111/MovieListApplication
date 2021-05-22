@@ -91,6 +91,7 @@ public class MovieListActivity extends AppCompatActivity {
         int selectedItemId = item.getItemId();
         if (selectedItemId == R.id.action_company_info) {
             Log.d(TAG, "Displaying company info");
+            mErrorMessageTextView.setVisibility(View.INVISIBLE);
             mMovieResultsTextView.setVisibility(View.INVISIBLE);
             mCompanyInfoTextView.setVisibility(View.VISIBLE);
             return true;
